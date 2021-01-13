@@ -9,6 +9,7 @@ import com.lagina.mvvmcore.data.api.ApiService
 import com.lagina.mvvmcore.data.local.AppDatabase
 import com.lagina.mvvmcore.data.local.DatabaseHelper
 import com.lagina.mvvmcore.data.local.DatabaseHelperImpl
+import com.lagina.mvvmcore.utils.DataStoreHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -74,5 +75,9 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideDatabaseHelper(databaseHelper: DatabaseHelperImpl): DatabaseHelper = databaseHelper
+
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context):DataStoreHelper=DataStoreHelper(context)
 
 }

@@ -7,12 +7,12 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class UserEntity(
-    @PrimaryKey(autoGenerate = true) @SerializedName("id")
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    @ColumnInfo(name = "name") @SerializedName("name")
+    @ColumnInfo(name = "name")
     var name: String = "",
-    @ColumnInfo(name = "email") @SerializedName("email")
+    @ColumnInfo(name = "email")
     var email: String = "",
-    @ColumnInfo(name = "avatar") @SerializedName("avatar")
+    @ColumnInfo(name = "avatar")
     var avatar: String = ""
 )

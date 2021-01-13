@@ -9,16 +9,19 @@ import com.lagina.mvvmcore.R
 import com.lagina.mvvmcore.data.local.DatabaseHelper
 import com.lagina.mvvmcore.data.local.entity.UserEntity
 import com.lagina.mvvmcore.data.api.model.ApiUser
+import com.lagina.mvvmcore.utils.DataStoreHelper
 import com.lagina.mvvmcore.utils.NetworkHelper
 import com.lagina.mvvmcore.utils.Resource
 import com.lagina.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class MainViewModel @ViewModelInject constructor(
     private val mainRepository: MainRepository,
     private val networkHelper: NetworkHelper,
     private val dbHelper: DatabaseHelper,
-    private val resourceProvider: ResourceProvider
+    private val resourceProvider: ResourceProvider,
+    private val dataStoreHelper: DataStoreHelper
 ) : ViewModel() {
 
     private val _users = MutableLiveData<Resource<List<ApiUser>>>()
@@ -44,7 +47,8 @@ class MainViewModel @ViewModelInject constructor(
 
                         }
                         dbHelper.insert(user)
-                    } else _users.postValue(Resource.error(it.errorBody().toString(), null))
+                    }
+                    else _users.postValue(Resource.error(it.errorBody().toString(), null))
                 }
             } else _users.postValue(
                 Resource.error(
