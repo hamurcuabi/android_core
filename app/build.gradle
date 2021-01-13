@@ -12,7 +12,7 @@ android {
     def version_name = "1.0"
 
     defaultConfig {
-        applicationId "com.emrhmrc.mvvmcore"
+        applicationId "com.lagina.mvvmcore"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
