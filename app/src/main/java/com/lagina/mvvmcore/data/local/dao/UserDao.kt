@@ -1,9 +1,6 @@
 package com.lagina.mvvmcore.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.lagina.mvvmcore.data.local.entity.UserEntity
 
 @Dao
@@ -18,7 +15,7 @@ interface UserDao {
     @Delete
     suspend fun delete(userEntity: UserEntity)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun add(userEntity: UserEntity)
 
 }

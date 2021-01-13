@@ -1,21 +1,17 @@
 package com.lagina.mvvmcore.utils
 
-data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+import okhttp3.ResponseBody
 
-    companion object {
+sealed class Resource<out T> {
 
-        fun <T> success(data: T?): Resource<T> {
-            return Resource(Status.SUCCESS, data, null)
-        }
+    data class Success<out T>(val value: T) : Resource<T>()
 
-        fun <T> error(msg: String, data: T?): Resource<T> {
-            return Resource(Status.ERROR, data, msg)
-        }
+    data class Failure(
+        val isNetworkError: Boolean,
+        val errorCode: Int?,
+        val errorBody: ResponseBody?,
+        val errorMessage: String?
+    ) : Resource<Nothing>()
 
-        fun <T> loading(data: T?): Resource<T> {
-            return Resource(Status.LOADING, data, null)
-        }
-
-    }
-
+    object Loading : Resource<Nothing>()
 }

@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
+import com.lagina.mvvmcore.utils.Resource
 import com.lagina.mvvmcore.data.network.model.ApiUser
 import com.lagina.mvvmcore.databinding.ActivityMainBinding
-import com.lagina.mvvmcore.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,24 +30,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObserver() {
         mainViewModel.users.observe(this) {
-            when (it.status) {
-                Status.SUCCESS -> {
+            when (it) {
+                is Resource.Success -> {
                     activityMainBinding.progressBar.visibility = View.GONE
-                    it.data?.let { users -> renderList(users) }
+                    renderList(it.value.body())
                 }
-                Status.LOADING -> {
+                is Resource.Loading -> {
                     activityMainBinding.progressBar.visibility = View.VISIBLE
                 }
-                Status.ERROR -> {
-                    //Handle Error
+                is Resource.Failure -> {
                     activityMainBinding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, it.errorMessage, Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    private fun renderList(apiUsers: List<ApiUser>) {
+    private fun renderList(apiUsers: List<ApiUser>?) {
 
         Toast.makeText(this, apiUsers.toString(), Toast.LENGTH_LONG).show()
     }

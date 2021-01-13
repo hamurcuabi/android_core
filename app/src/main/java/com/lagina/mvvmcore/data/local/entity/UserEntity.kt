@@ -2,6 +2,8 @@ package com.lagina.mvvmcore.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.OnConflictStrategy
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 

@@ -2,11 +2,12 @@ package com.lagina.mvvmcore.mapper
 
 import com.lagina.mvvmcore.data.domainmodel.User
 import com.lagina.mvvmcore.data.local.entity.UserEntity
+import com.lagina.mvvmcore.data.network.model.ApiUser
 import com.lagina.mvvmcore.utils.EntityMapper
 
-class UserApiMapper : EntityMapper<UserEntity, User> {
-    override fun mapFromEntity(entity: UserEntity): User {
-        return User(
+class UserApiMapper : EntityMapper<UserEntity, ApiUser> {
+    override fun mapFromEntity(entity: UserEntity): ApiUser {
+        return ApiUser(
             email = entity.email,
             id = entity.id,
             avatar = entity.avatar,
@@ -14,7 +15,7 @@ class UserApiMapper : EntityMapper<UserEntity, User> {
         )
     }
 
-    override fun mapToEntity(domainModel: User): UserEntity {
+    override fun mapToEntity(domainModel: ApiUser): UserEntity {
         return UserEntity(
             email = domainModel.email,
             id = domainModel.id,
@@ -23,11 +24,11 @@ class UserApiMapper : EntityMapper<UserEntity, User> {
         )
     }
 
-    fun fromEntityList(initial: List<UserEntity>): List<User> {
+    fun fromEntityList(initial: List<UserEntity>): List<ApiUser> {
         return initial.map { mapFromEntity(it) }
     }
 
-    fun toEntityList(initial: List<User>): List<UserEntity> {
+    fun toEntityList(initial: List<ApiUser>): List<UserEntity> {
         return initial.map { mapToEntity(it) }
     }
 

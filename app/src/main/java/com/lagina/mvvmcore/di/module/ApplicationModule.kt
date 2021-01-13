@@ -9,6 +9,7 @@ import com.lagina.mvvmcore.data.network.ApiService
 import com.lagina.mvvmcore.data.local.AppDatabase
 import com.lagina.mvvmcore.data.local.DatabaseHelper
 import com.lagina.mvvmcore.data.local.DatabaseHelperImpl
+import com.lagina.mvvmcore.mapper.UserApiMapper
 import com.lagina.mvvmcore.utils.DataStoreHelper
 import dagger.Module
 import dagger.Provides
@@ -86,4 +87,7 @@ class ApplicationModule {
     @Singleton
     fun provideDataStore(@ApplicationContext context: Context):DataStoreHelper= DataStoreHelper(context)
 
+    @Provides
+    @Singleton
+    fun provideUserApiMapper()=UserApiMapper()
 }
