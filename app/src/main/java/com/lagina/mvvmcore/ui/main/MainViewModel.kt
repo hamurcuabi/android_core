@@ -8,13 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.lagina.mvvmcore.R
 import com.lagina.mvvmcore.data.local.DatabaseHelper
 import com.lagina.mvvmcore.data.local.entity.UserEntity
-import com.lagina.mvvmcore.data.api.model.ApiUser
+import com.lagina.mvvmcore.data.network.model.ApiUser
 import com.lagina.mvvmcore.utils.DataStoreHelper
 import com.lagina.mvvmcore.utils.NetworkHelper
 import com.lagina.mvvmcore.utils.Resource
 import com.lagina.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 class MainViewModel @ViewModelInject constructor(
     private val mainRepository: MainRepository,

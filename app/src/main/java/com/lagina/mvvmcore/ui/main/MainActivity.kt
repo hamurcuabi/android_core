@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
-import com.lagina.mvvmcore.data.api.model.ApiUser
+import com.lagina.mvvmcore.data.network.model.ApiUser
 import com.lagina.mvvmcore.databinding.ActivityMainBinding
 import com.lagina.mvvmcore.utils.Status
 import dagger.hilt.android.AndroidEntryPoint

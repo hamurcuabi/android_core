@@ -1,4 +1,4 @@
-package com.lagina.mvvmcore.data.api.model
+package com.lagina.mvvmcore.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

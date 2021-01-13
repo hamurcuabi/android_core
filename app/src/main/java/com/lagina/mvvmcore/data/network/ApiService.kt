@@ -1,6 +1,6 @@
-package com.lagina.mvvmcore.data.api
+package com.lagina.mvvmcore.data.network
 
-import com.lagina.mvvmcore.data.api.model.ApiUser
+import com.lagina.mvvmcore.data.network.model.ApiUser
 import retrofit2.Response
 import retrofit2.http.GET
 

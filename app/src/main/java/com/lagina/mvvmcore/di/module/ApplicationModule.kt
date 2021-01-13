@@ -3,9 +3,9 @@ package com.lagina.mvvmcore.di.module
 import android.content.Context
 import androidx.room.Room
 import com.lagina.mvvmcore.BuildConfig
-import com.lagina.mvvmcore.data.api.ApiHelper
-import com.lagina.mvvmcore.data.api.ApiHelperImpl
-import com.lagina.mvvmcore.data.api.ApiService
+import com.lagina.mvvmcore.data.network.ApiHelper
+import com.lagina.mvvmcore.data.network.ApiHelperImpl
+import com.lagina.mvvmcore.data.network.ApiService
 import com.lagina.mvvmcore.data.local.AppDatabase
 import com.lagina.mvvmcore.data.local.DatabaseHelper
 import com.lagina.mvvmcore.data.local.DatabaseHelperImpl
@@ -19,6 +19,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,6 +28,11 @@ class ApplicationModule {
 
     @Provides
     fun provideBaseUrl() = BuildConfig.SERVICE_API_URL
+
+    @Provides
+    @Named("DATABASE_NAME")
+    fun provideDatabaseName() = BuildConfig.DATABASE_NAME
+
 
     @Provides
     @Singleton
@@ -55,11 +61,11 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
+    fun provideAppDatabase(@ApplicationContext context: Context,@Named("DATABASE_NAME") DatabaseName:String): AppDatabase =
         Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java,
-            "hamurcu-abi"
+            DatabaseName
         ).fallbackToDestructiveMigration()
             .build()
 
@@ -78,6 +84,6 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideDataStore(@ApplicationContext context: Context):DataStoreHelper=DataStoreHelper(context)
+    fun provideDataStore(@ApplicationContext context: Context):DataStoreHelper= DataStoreHelper(context)
 
 }
