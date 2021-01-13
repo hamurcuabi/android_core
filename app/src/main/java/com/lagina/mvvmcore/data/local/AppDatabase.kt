@@ -8,7 +8,7 @@ import com.lagina.mvvmcore.data.local.entity.UserEntity
 import com.lagina.mvvmcore.data.local.typeconverter.DateConverter
 
 
-@Database(entities = [UserEntity::class], version = 1)
+@Database(entities = [UserEntity::class], version = 1,exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
