@@ -16,8 +16,8 @@ class MainViewModel @ViewModelInject constructor(
     private val resourceProvider: ResourceProvider,
 ) : ViewModel() {
 
-    private val _users = MutableLiveData<Resource<Response<List<ApiUser>>>>()
-    val users: LiveData<Resource<Response<List<ApiUser>>>> get() = _users
+    private val _users = MutableLiveData<Resource<List<ApiUser>>>()
+    val users: LiveData<Resource<List<ApiUser>>> get() = _users
 
     init {
         fetchUsers()

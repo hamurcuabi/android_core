@@ -2,7 +2,7 @@ package com.lagina.mvvmcore.base
 
 import com.lagina.mvvmcore.R
 import com.lagina.mvvmcore.utils.NetworkHelper
-import com.lagina.mvvmcore.utils.Resource
+import com.lagina.mvvmcore.utils.NetworkResource
 import com.lagina.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,7 +14,7 @@ abstract class BaseRepository constructor(
 ) {
     suspend fun <T> safeApiCall(
         apiCall: suspend () -> T
-    ): Resource<T> {
+    ): NetworkResource<T> {
 
 
         return withContext(Dispatchers.IO) {
@@ -22,22 +22,14 @@ abstract class BaseRepository constructor(
             if (networkHelper.isNetworkConnected()) {
 
                 try {
-                    Resource.Success(apiCall.invoke())
+                    NetworkResource.Success(apiCall.invoke())
                 } catch (throwable: Throwable) {
                     when (throwable) {
                         is HttpException -> {
-                            Resource.Failure(
-                                false,
-                                throwable.code(),
-                                throwable.response()?.errorBody(),
-                                resourceProvider.getString(R.string.unexcpected_error)
-                            )
+                            NetworkResource.Error(throwable.message())
                         }
                         else -> {
-                            Resource.Failure(
-                                true,
-                                null,
-                                null,
+                            NetworkResource.Error(
                                 resourceProvider.getString(R.string.unexcpected_error)
                             )
                         }
@@ -45,11 +37,7 @@ abstract class BaseRepository constructor(
                 }
 
             } else {
-
-                Resource.Failure(
-                    true,
-                    null,
-                    null,
+                NetworkResource.Error(
                     resourceProvider.getString(R.string.no_internet_connection)
                 )
             }

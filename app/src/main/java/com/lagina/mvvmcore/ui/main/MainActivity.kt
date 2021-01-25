@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
-import com.lagina.mvvmcore.utils.Resource
 import com.lagina.mvvmcore.data.network.model.ApiUser
 import com.lagina.mvvmcore.databinding.ActivityMainBinding
+import com.lagina.mvvmcore.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             when (it) {
                 is Resource.Success -> {
                     activityMainBinding.progressBar.visibility = View.GONE
-                    renderList(it.value.body())
+                    renderList(it.value)
                 }
                 is Resource.Loading -> {
                     activityMainBinding.progressBar.visibility = View.VISIBLE
@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun renderList(apiUsers: List<ApiUser>?) {
-
         Toast.makeText(this, apiUsers.toString(), Toast.LENGTH_LONG).show()
     }
 }
