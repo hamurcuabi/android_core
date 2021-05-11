@@ -2,8 +2,6 @@ package com.emrhmrc.mvvmcore.mapper
 
 import com.emrhmrc.mvvmcore.data.local.entity.UserEntity
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
-import com.emrhmrc.mvvmcore.utils.EntityMapper
-import javax.inject.Singleton
 
 class UserApiMapper : EntityMapper<UserEntity, ApiUser> {
     override fun mapFromEntity(entity: UserEntity): ApiUser {

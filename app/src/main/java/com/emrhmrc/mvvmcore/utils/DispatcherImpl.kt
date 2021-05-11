@@ -1,4 +1,4 @@
-package com.emrhmrc.mvvmcore.di.module
+package com.emrhmrc.mvvmcore.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

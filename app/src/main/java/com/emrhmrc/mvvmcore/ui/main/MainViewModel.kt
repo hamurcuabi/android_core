@@ -3,10 +3,9 @@ package com.emrhmrc.mvvmcore.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
-import com.emrhmrc.mvvmcore.di.module.DispatcherProvider
+import com.emrhmrc.mvvmcore.utils.DispatcherProvider
 import com.emrhmrc.mvvmcore.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

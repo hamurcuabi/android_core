@@ -1,4 +1,4 @@
-package com.emrhmrc.mvvmcore.utils
+package com.emrhmrc.mvvmcore.mapper
 
 interface EntityMapper <Entity, DomainModel>{
 

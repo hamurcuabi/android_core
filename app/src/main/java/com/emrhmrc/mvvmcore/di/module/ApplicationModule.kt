@@ -11,12 +11,13 @@ import com.emrhmrc.mvvmcore.data.network.ApiHelperImpl
 import com.emrhmrc.mvvmcore.data.network.ApiService
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
 import com.emrhmrc.mvvmcore.utils.DataStoreHelper
+import com.emrhmrc.mvvmcore.utils.DispatcherImpl
+import com.emrhmrc.mvvmcore.utils.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
