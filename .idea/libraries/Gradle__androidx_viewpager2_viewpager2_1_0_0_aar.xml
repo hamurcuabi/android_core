@@ -2,15 +2,15 @@
   <library name="Gradle: androidx.viewpager2:viewpager2:1.0.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/758f124c997e0e98f4181cf5e4d1e2db/jetified-viewpager2-1.0.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/588e8e22d7f90cf0590943b6b29d64ef/jetified-viewpager2-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/758f124c997e0e98f4181cf5e4d1e2db/jetified-viewpager2-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/758f124c997e0e98f4181cf5e4d1e2db/jetified-viewpager2-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/758f124c997e0e98f4181cf5e4d1e2db/jetified-viewpager2-1.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

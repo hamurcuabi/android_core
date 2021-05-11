@@ -2,15 +2,20 @@
   <library name="Gradle: androidx.exifinterface:exifinterface:1.0.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/3591d615708b42c2ddd2822487b94fef/exifinterface-1.0.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/5b6672ea0b8faa92504921bb05e80a11/exifinterface-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/34ce71f20363e291e837b2b83ad2de4e/exifinterface-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/5f055b366847f157aa0a42b681e89e0a/exifinterface-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/b0c39c69fd35c6d5f874d8fb10175c4d/exifinterface-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/92dba464cc7abaf9fa513acf251fcda9/exifinterface-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/3591d615708b42c2ddd2822487b94fef/exifinterface-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/3591d615708b42c2ddd2822487b94fef/exifinterface-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/3591d615708b42c2ddd2822487b94fef/exifinterface-1.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
