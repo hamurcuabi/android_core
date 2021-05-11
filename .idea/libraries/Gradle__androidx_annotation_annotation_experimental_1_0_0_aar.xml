@@ -4,10 +4,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/f5bd2fca96a88fef8e321ff4f70a790d/jetified-annotation-experimental-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-experimental/1.0.0/2408f6cb8f31ffabdd88e1365f82914c251e44dc/annotation-experimental-1.0.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/modules-2/files-2.1/androidx.annotation/annotation-experimental/1.0.0/2408f6cb8f31ffabdd88e1365f82914c251e44dc/annotation-experimental-1.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

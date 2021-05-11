@@ -126,15 +126,13 @@ output.json
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
+ auto-import.
+ .idea/artifacts
+ .idea/compiler.xml
+ .idea/jarRepositories.xml
+ .idea/*.iml
+ .idea/modules
+ *.ipr
 
 # CMake
 cmake-build-*/
@@ -360,7 +358,6 @@ gradle-app.setting
 /*/out
 /*/*/build
 /*/*/production
-*.ipr
 *~
 *.swp
 
@@ -386,7 +383,6 @@ obj/
 .idea/libraries/
 .idea/shelf/
 .idea/.name
-.idea/compiler.xml
 .idea/copyright/profiles_settings.xml
 .idea/encodings.xml
 .idea/misc.xml
@@ -398,7 +394,6 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
-.idea/jarRepositories.xml
 
 # OS-specific files
 .DS_Store
@@ -437,4 +432,4 @@ Thumbs.db
 !/gradle/wrapper/gradle-wrapper.jar
 
 /.gradle/
-/.idea/
+

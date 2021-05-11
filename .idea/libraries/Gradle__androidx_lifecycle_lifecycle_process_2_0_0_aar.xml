@@ -4,10 +4,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/1aa89f204e58d9d5daeb270db9fb79e2/jetified-lifecycle-process-2.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-process/2.0.0/8987183ddf04ab7f340753ad5d6ceb4ba53e4b37/lifecycle-process-2.0.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-process/2.0.0/8987183ddf04ab7f340753ad5d6ceb4ba53e4b37/lifecycle-process-2.0.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -4,10 +4,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/res" />
+      <root url="file://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/transforms-2/files-2.1/a9ee2c4cbcdbbcf3af41692ea7d4bd81/sqlite-framework-2.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.sqlite/sqlite-framework/2.0.1/ebd864adb6e958f17da973aa9391d7865e305c5e/sqlite-framework-2.0.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/LocationTracker-WorkManager-master/LocationTracker-WorkManager-master/LocationWorker/caches/modules-2/files-2.1/androidx.sqlite/sqlite-framework/2.0.1/ebd864adb6e958f17da973aa9391d7865e305c5e/sqlite-framework-2.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
