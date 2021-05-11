@@ -432,4 +432,4 @@ Thumbs.db
 !/gradle/wrapper/gradle-wrapper.jar
 
 /.gradle/
-
+/.idea/
