@@ -1,11 +1,12 @@
 package com.emrhmrc.mvvmcore.di.module
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.emrhmrc.mvvmcore.BuildConfig
 import com.emrhmrc.mvvmcore.data.local.AppDatabase
-import com.emrhmrc.mvvmcore.data.local.DatabaseHelper
-import com.emrhmrc.mvvmcore.data.local.DatabaseHelperImpl
+import com.emrhmrc.mvvmcore.data.local.dao.UserDao
 import com.emrhmrc.mvvmcore.data.network.ApiHelper
 import com.emrhmrc.mvvmcore.data.network.ApiHelperImpl
 import com.emrhmrc.mvvmcore.data.network.ApiService
@@ -18,11 +19,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +34,7 @@ import javax.inject.Singleton
 object ApplicationModule {
 
     @Provides
+    @Named("BASE_URL")
     fun provideBaseUrl() = BuildConfig.SERVICE_API_URL
 
     @Provides
@@ -53,27 +58,26 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-        BASE_URL: String
+        okHttpClient: OkHttpClient, @Named("BASE_URL") baseUrl: String
     ): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
+        .baseUrl(baseUrl)
         .client(okHttpClient)
         .build()
 
     @Provides
     @Singleton
     fun provideAppDatabase(
-        @ApplicationContext context: Context,
-        @Named("DATABASE_NAME") DatabaseName: String
-    ): AppDatabase =
-        Room.databaseBuilder(
-            context.applicationContext,
-            AppDatabase::class.java,
-            DatabaseName
-        ).fallbackToDestructiveMigration()
-            .build()
+        app: Application,
+        callback: AppDatabase.DbCallback,
+        @Named("DATABASE_NAME") dataBaseName: String
+    ): AppDatabase = Room.databaseBuilder(app, AppDatabase::class.java, dataBaseName)
+        .fallbackToDestructiveMigration()
+        .addCallback(callback)
+        .build()
 
+    @Provides
+    fun provideUserDao(db: AppDatabase): UserDao = db.userDao()
 
     @Provides
     @Singleton
@@ -82,10 +86,6 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
-
-    @Provides
-    @Singleton
-    fun provideDatabaseHelper(databaseHelper: DatabaseHelperImpl): DatabaseHelper = databaseHelper
 
     @Provides
     @Singleton
@@ -99,4 +99,8 @@ object ApplicationModule {
     @Provides
     @Singleton
     fun provideDispatchers(dispatcherImpl: DispatcherImpl): DispatcherProvider = dispatcherImpl
+
+    @Provides
+    @Singleton
+    fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 }

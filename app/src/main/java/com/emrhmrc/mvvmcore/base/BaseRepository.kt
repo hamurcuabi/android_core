@@ -7,6 +7,8 @@ import com.emrhmrc.mvvmcore.utils.NetworkResource
 import com.emrhmrc.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import java.io.IOException
+import java.net.SocketTimeoutException
 
 abstract class BaseRepository constructor(
     private val networkHelper: NetworkHelper,
@@ -22,21 +24,15 @@ abstract class BaseRepository constructor(
                     NetworkResource.Success(apiCall.invoke())
                 } catch (throwable: Throwable) {
                     when (throwable) {
-                        is HttpException -> {
-                            NetworkResource.Error(throwable.message())
-                        }
-                        else -> {
-                            NetworkResource.Error(
-                                resourceProvider.getString(R.string.unexcpected_error)
-                            )
-                        }
+                        is HttpException -> NetworkResource.Error(throwable.message())
+                        is SocketTimeoutException -> NetworkResource.Error("SocketTimeoutException")
+                        is IOException -> NetworkResource.Error("IOException")
+                        else -> NetworkResource.Error(resourceProvider.getString(R.string.unexcpected_error))
                     }
                 }
 
             } else {
-                NetworkResource.Error(
-                    resourceProvider.getString(R.string.no_internet_connection)
-                )
+                NetworkResource.Error(resourceProvider.getString(R.string.no_internet_connection))
             }
         }
     }

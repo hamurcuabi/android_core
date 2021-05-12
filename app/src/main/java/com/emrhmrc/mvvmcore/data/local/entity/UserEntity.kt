@@ -3,8 +3,9 @@ package com.emrhmrc.mvvmcore.data.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
-@Entity
+@Entity(tableName = "user_entity")
 data class UserEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
@@ -13,5 +14,5 @@ data class UserEntity(
     @ColumnInfo(name = "email")
     var email: String = "",
     @ColumnInfo(name = "avatar")
-    var avatar: String = ""
+    var avatar: String = "",
 )

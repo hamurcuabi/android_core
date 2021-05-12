@@ -1,6 +1,7 @@
 package com.emrhmrc.mvvmcore.ui.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
 import com.emrhmrc.mvvmcore.utils.DispatcherProvider
@@ -20,12 +21,11 @@ class MainViewModel @Inject constructor(
     private val _users = MutableStateFlow<Resource<List<ApiUser>>>(Resource.Loading)
     val users: StateFlow<Resource<List<ApiUser>>> get() = _users
 
-    init {
-        fetchUsers()
-    }
 
-    private fun fetchUsers() = viewModelScope.launch(dispatcherProvider.io) {
+    fun fetchUsers() = viewModelScope.launch(dispatcherProvider.io) {
         _users.value = Resource.Loading
         _users.value = mainRepository.getUsers()
     }
+
+    fun fetchLocalUsers() = mainRepository.getAllUser().asLiveData()
 }
