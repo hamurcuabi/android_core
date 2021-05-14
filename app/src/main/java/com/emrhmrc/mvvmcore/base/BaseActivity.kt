@@ -26,5 +26,4 @@ abstract class BaseActivity<VB : ViewBinding>(
         setContentView(binding.root)
         init()
     }
-
 }
