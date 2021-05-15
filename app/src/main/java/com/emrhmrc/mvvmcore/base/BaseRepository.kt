@@ -27,7 +27,7 @@ abstract class BaseRepository constructor(
                         is HttpException -> NetworkResource.Error(throwable.message())
                         is SocketTimeoutException -> NetworkResource.Error("SocketTimeoutException")
                         is IOException -> NetworkResource.Error("IOException")
-                        else -> NetworkResource.Error(resourceProvider.getString(R.string.unexcpected_error))
+                        else -> NetworkResource.Error(resourceProvider.getString(R.string.unexpected_error))
                     }
                 }
 
