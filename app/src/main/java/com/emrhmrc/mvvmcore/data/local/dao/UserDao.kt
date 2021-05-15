@@ -10,7 +10,7 @@ interface UserDao {
     @Query("SELECT * FROM user_entity")
     fun getAll(): Flow<List<UserEntity>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(userEntities: UserEntity)
 
     @Insert
@@ -18,8 +18,4 @@ interface UserDao {
 
     @Delete
     suspend fun delete(userEntity: UserEntity)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun add(userEntity: UserEntity)
-
 }
