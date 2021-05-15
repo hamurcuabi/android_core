@@ -274,4 +274,10 @@ fabric.properties
 
 # Android Profiling
 *.hprof
-
+/local.properties
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/build
+/captures
+.idea
