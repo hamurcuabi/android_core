@@ -25,14 +25,18 @@ abstract class BaseRepository constructor(
                 } catch (throwable: Throwable) {
                     when (throwable) {
                         is HttpException -> NetworkResource.Error(throwable.message())
-                        is SocketTimeoutException -> NetworkResource.Error("SocketTimeoutException")
-                        is IOException -> NetworkResource.Error("IOException")
-                        else -> NetworkResource.Error(resourceProvider.getString(R.string.unexpected_error))
+                        is SocketTimeoutException -> NetworkResource.Error(
+                            resourceProvider.getString(
+                                Str.socket_exception
+                            )
+                        )
+                        is IOException -> NetworkResource.Error(resourceProvider.getString(Str.io_exception))
+                        else -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error))
                     }
                 }
 
             } else {
-                NetworkResource.Error(resourceProvider.getString(R.string.no_internet_connection))
+                NetworkResource.Error(resourceProvider.getString(Str.no_internet_connection))
             }
         }
     }

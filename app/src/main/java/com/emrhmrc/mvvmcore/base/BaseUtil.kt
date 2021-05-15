@@ -12,15 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.emrhmrc.mvvmcore.R
 
-/**
- *  URL           https://macellan.net/
- *  Rev           1.0
- *  Author        EmreHamurcu
- *  Date          5/12/2021
- *  FileName      BaseUtil
- */
-
-
 typealias InflateActivityView<T> = (LayoutInflater) -> T
 
 typealias InflateFragmentView<T> = (LayoutInflater, ViewGroup?, Boolean) -> T

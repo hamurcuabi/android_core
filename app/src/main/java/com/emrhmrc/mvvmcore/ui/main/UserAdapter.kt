@@ -8,13 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emrhmrc.mvvmcore.data.local.entity.UserEntity
 import com.emrhmrc.mvvmcore.databinding.ItemLayoutBinding
 
-/**
- *  URL           https://macellan.net/
- *  Rev           1.0
- *  Author        EmreHamurcu
- *  Date          5/12/2021
- *  FileName     UserAdapter
- */
 class UserAdapter : ListAdapter<UserEntity, UserAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -7,13 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-/**
- *  URL           https://macellan.net/
- *  Rev           1.0
- *  Author        EmreHamurcu
- *  Date          5/14/2021
- *  FileName     BaseFragment
- */
 abstract class BaseFragment<VB : ViewBinding>(
     private val inflateFragmentView: InflateFragmentView<VB>
 ) : Fragment() {
