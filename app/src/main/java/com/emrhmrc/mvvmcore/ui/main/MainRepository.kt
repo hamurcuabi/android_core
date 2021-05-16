@@ -4,6 +4,8 @@ import com.emrhmrc.mvvmcore.base.BaseRepository
 import com.emrhmrc.mvvmcore.data.local.AppDatabase
 import com.emrhmrc.mvvmcore.data.network.ApiHelper
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
+import com.emrhmrc.mvvmcore.di.DispatcherProvider
+import com.emrhmrc.mvvmcore.helper.NetworkHelper
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
 import com.emrhmrc.mvvmcore.utils.*
 import javax.inject.Inject

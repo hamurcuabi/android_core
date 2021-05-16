@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
-import com.emrhmrc.mvvmcore.utils.DispatcherProvider
+import com.emrhmrc.mvvmcore.di.DispatcherProvider
 import com.emrhmrc.mvvmcore.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

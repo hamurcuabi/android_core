@@ -3,7 +3,6 @@ package com.emrhmrc.mvvmcore.di.module
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.emrhmrc.mvvmcore.BuildConfig
 import com.emrhmrc.mvvmcore.data.local.AppDatabase
 import com.emrhmrc.mvvmcore.data.local.dao.UserDao
@@ -11,9 +10,9 @@ import com.emrhmrc.mvvmcore.data.network.ApiHelper
 import com.emrhmrc.mvvmcore.data.network.ApiHelperImpl
 import com.emrhmrc.mvvmcore.data.network.ApiService
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
-import com.emrhmrc.mvvmcore.utils.DataStoreHelper
-import com.emrhmrc.mvvmcore.utils.DispatcherImpl
-import com.emrhmrc.mvvmcore.utils.DispatcherProvider
+import com.emrhmrc.mvvmcore.helper.DataStoreHelper
+import com.emrhmrc.mvvmcore.di.DispatcherImpl
+import com.emrhmrc.mvvmcore.di.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +25,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module

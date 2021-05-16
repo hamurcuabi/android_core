@@ -1,8 +1,7 @@
 package com.emrhmrc.mvvmcore.base
 
-import com.emrhmrc.mvvmcore.R
-import com.emrhmrc.mvvmcore.utils.DispatcherProvider
-import com.emrhmrc.mvvmcore.utils.NetworkHelper
+import com.emrhmrc.mvvmcore.di.DispatcherProvider
+import com.emrhmrc.mvvmcore.helper.NetworkHelper
 import com.emrhmrc.mvvmcore.utils.NetworkResource
 import com.emrhmrc.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package com.emrhmrc.mvvmcore.utils
+package com.emrhmrc.mvvmcore.helper
 
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences
