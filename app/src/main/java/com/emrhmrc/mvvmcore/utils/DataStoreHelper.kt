@@ -14,12 +14,18 @@ import javax.inject.Inject
 
 const val USER_PREFERENCES_NAME = "data_store_preferences"
 
+//extension for data store
+private val Context.myDataStore by preferencesDataStore(
+    name = USER_PREFERENCES_NAME
+)
+
 class DataStoreHelper @Inject constructor(@ApplicationContext private val context: Context) {
 
-    //extension for data store
-    private val Context.myDataStore by preferencesDataStore(
-        name = USER_PREFERENCES_NAME
-    )
+    suspend fun clearDataStore() {
+        context.myDataStore.edit {
+            it.clear()
+        }
+    }
 
     //region String Read/Write
     /**
