@@ -6,6 +6,7 @@ import com.emrhmrc.mvvmcore.utils.NetworkResource
 import com.emrhmrc.mvvmcore.utils.ResourceProvider
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 import java.net.SocketTimeoutException
 
@@ -20,7 +21,12 @@ abstract class BaseRepository constructor(
         return withContext(dispatcher.io) {
             if (networkHelper.isNetworkConnected()) {
                 try {
-                    NetworkResource.Success(apiCall.invoke())
+                    val result = apiCall.invoke()
+                    when ((result as Response<*>).code()) {
+                        in 200..300 -> NetworkResource.Success(result)
+                        401 -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error))
+                        else -> NetworkResource.Error(result.message())
+                    }
                 } catch (throwable: Throwable) {
                     when (throwable) {
                         is HttpException -> NetworkResource.Error(throwable.message())

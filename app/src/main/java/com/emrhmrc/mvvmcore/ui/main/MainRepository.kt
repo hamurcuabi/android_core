@@ -24,7 +24,7 @@ class MainRepository @Inject constructor(
             apiHelper.getUsers()
         }
         return when (networkResponse) {
-            is NetworkResource.Success -> Resource.Success(networkResponse.data?.body()!!)
+            is NetworkResource.Success -> Resource.Success(networkResponse.data?.body())
             is NetworkResource.Error -> Resource.Failure(networkResponse.message)
         }
     }

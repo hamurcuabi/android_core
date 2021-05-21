@@ -21,6 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun init() {
         initRecycler()
         setupObserver()
+        mainViewModel.fetchUsers()
     }
 
     private fun initRecycler() {

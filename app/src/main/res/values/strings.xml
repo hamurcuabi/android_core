@@ -3,4 +3,5 @@
     <string name="unexpected_error">unexpected_error</string>
     <string name="socket_exception">socket_exception</string>
     <string name="io_exception">io_exception</string>
+    <string name="auth_exception">auth_exception</string>
 </resources>
