@@ -43,10 +43,11 @@ class DataStoreHelperTest {
 
     @Test
     fun saveAndReadString() = runBlocking {
+        val text = "test"
         val stringKey = stringPreferencesKey(stringKey)
-        dataStoreHelper.saveString(stringKey, "message")
+        dataStoreHelper.saveString(stringKey, text)
         val messageSaved = dataStoreHelper.readString(stringKey).asLiveData().getOrAwaitValueTest()
-        assertThat(messageSaved).isEqualTo("message")
+        assertThat(messageSaved).isEqualTo(text)
         dataStoreHelper.clearDataStore()
     }
 
@@ -72,7 +73,8 @@ class DataStoreHelperTest {
     fun saveAndReadBoolean() = runBlocking {
         val booleanKey = booleanPreferencesKey(booleanKey)
         dataStoreHelper.saveBoolean(booleanKey, true)
-        val messageSaved = dataStoreHelper.readBoolean(booleanKey).asLiveData().getOrAwaitValueTest()
+        val messageSaved =
+            dataStoreHelper.readBoolean(booleanKey).asLiveData().getOrAwaitValueTest()
         assertThat(messageSaved).isEqualTo(true)
         dataStoreHelper.clearDataStore()
     }
