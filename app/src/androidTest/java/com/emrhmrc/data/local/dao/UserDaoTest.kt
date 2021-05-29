@@ -81,4 +81,12 @@ class UserDaoTest {
         assertThat(data).contains(user3)
     }
 
+    @Test
+    fun test_getById() = runBlockingTest {
+        val user = UserEntity(id = 1, name = "emre", email = "email", avatar = "avatar")
+        dao.insert(user)
+        val dbUser = dao.getById(1).asLiveData().getOrAwaitValueTest()
+        assertThat(dbUser == user).isTrue()
+    }
+
 }
