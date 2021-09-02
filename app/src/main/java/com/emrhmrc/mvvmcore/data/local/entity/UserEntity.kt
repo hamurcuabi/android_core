@@ -15,4 +15,6 @@ data class UserEntity(
     var email: String = "",
     @ColumnInfo(name = "avatar")
     var avatar: String = "",
+    @ColumnInfo(name = "date")
+    var date: Date = Calendar.getInstance().time,
 )

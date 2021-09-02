@@ -19,6 +19,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 
 /**
  *  Rev           1.0
@@ -83,7 +84,7 @@ class UserDaoTest {
 
     @Test
     fun test_getById() = runBlockingTest {
-        val user = UserEntity(id = 1, name = "emre", email = "email", avatar = "avatar")
+        val user = UserEntity(id = 1, name = "emre", email = "email", avatar = "avatar",date = Calendar.getInstance().time)
         dao.insert(user)
         val dbUser = dao.getById(1).asLiveData().getOrAwaitValueTest()
         assertThat(dbUser == user).isTrue()

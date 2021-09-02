@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.emrhmrc.mvvmcore.data.local.entity.UserEntity
+import com.emrhmrc.mvvmcore.data.network.model.ApiUser
 import com.emrhmrc.mvvmcore.databinding.ItemLayoutBinding
 
-class UserAdapter : ListAdapter<UserEntity, UserAdapter.ViewHolder>(DiffCallback()) {
+class UserAdapter(private val listener: (ApiUser) -> Unit) :
+    ListAdapter<ApiUser, UserAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -20,21 +21,27 @@ class UserAdapter : ListAdapter<UserEntity, UserAdapter.ViewHolder>(DiffCallback
         holder.bind(currentItem)
     }
 
-    class ViewHolder(private val binding: ItemLayoutBinding) :
+    class ViewHolder(
+        private val binding: ItemLayoutBinding,
+        private val listener: (ApiUser) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(userEntity: UserEntity) {
+
+        fun bind(userEntity: ApiUser) {
+            itemView.setOnClickListener { listener.invoke(userEntity) }
+
             binding.apply {
                 txtName.text = userEntity.name
             }
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<UserEntity>() {
-        override fun areItemsTheSame(oldItem: UserEntity, newItem: UserEntity): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<ApiUser>() {
+        override fun areItemsTheSame(oldItem: ApiUser, newItem: ApiUser): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UserEntity, newItem: UserEntity) =
+        override fun areContentsTheSame(oldItem: ApiUser, newItem: ApiUser) =
             oldItem == newItem
     }
 }
