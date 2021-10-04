@@ -22,6 +22,11 @@ class MainActivity :
         initRecycler()
         binding.viewModel = viewModel
         binding.fabEvent=MainViewEvent.ClickToFab
+        viewModel.isLoginFormValidMediator.observe(this,{
+           it?.let {
+            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+           }
+        })
     }
 
     private fun initRecycler() {

@@ -24,24 +24,24 @@ abstract class BaseRepository constructor(
                     val result = apiCall.invoke()
                     when ((result as Response<*>).code()) {
                         in 200..300 -> NetworkResource.Success(result)
-                        401 -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error))
-                        else -> NetworkResource.Error(result.message())
+                        401 -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error),401)
+                        else -> NetworkResource.Error(result.message(),result.code())
                     }
                 } catch (throwable: Throwable) {
                     when (throwable) {
-                        is HttpException -> NetworkResource.Error(throwable.message())
+                        is HttpException -> NetworkResource.Error(throwable.message(),500)
                         is SocketTimeoutException -> NetworkResource.Error(
                             resourceProvider.getString(
                                 Str.socket_exception
-                            )
+                            ),500
                         )
-                        is IOException -> NetworkResource.Error(resourceProvider.getString(Str.io_exception))
-                        else -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error))
+                        is IOException -> NetworkResource.Error(resourceProvider.getString(Str.io_exception),500)
+                        else -> NetworkResource.Error(resourceProvider.getString(Str.unexpected_error),500)
                     }
                 }
 
             } else {
-                NetworkResource.Error(resourceProvider.getString(Str.no_internet_connection))
+                NetworkResource.Error(resourceProvider.getString(Str.no_internet_connection),500)
             }
         }
     }

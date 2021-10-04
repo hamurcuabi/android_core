@@ -7,6 +7,7 @@ import com.emrhmrc.mvvmcore.data.network.model.ApiUser
 import com.emrhmrc.mvvmcore.di.DispatcherProvider
 import com.emrhmrc.mvvmcore.helper.NetworkHelper
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
+import com.emrhmrc.mvvmcore.utils.ErrorType
 import com.emrhmrc.mvvmcore.utils.NetworkResource
 import com.emrhmrc.mvvmcore.utils.Resource
 import com.emrhmrc.mvvmcore.utils.ResourceProvider
@@ -28,7 +29,7 @@ class MainRepository @Inject constructor(
         }
         return when (networkResponse) {
             is NetworkResource.Success -> Resource.Success(networkResponse.data?.body())
-            is NetworkResource.Error -> Resource.Failure(networkResponse.message)
+            is NetworkResource.Error -> Resource.Failure(ErrorType.NetworkError(networkResponse.statusCode,networkResponse.message))
         }
     }
 
@@ -39,7 +40,7 @@ class MainRepository @Inject constructor(
         }
         val response = when (networkResponse) {
             is NetworkResource.Success -> Resource.Success(networkResponse.data?.body())
-            is NetworkResource.Error -> Resource.Failure(networkResponse.message)
+            is NetworkResource.Error -> Resource.Failure(ErrorType.NetworkError(networkResponse.statusCode,networkResponse.message))
         }
         emit(response)
     }
