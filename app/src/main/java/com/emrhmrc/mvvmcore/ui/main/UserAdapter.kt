@@ -13,7 +13,9 @@ class UserAdapter(private val listener: (ApiUser) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding, listener)
+        return ViewHolder(binding) {
+            listener(currentList[it])
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -23,13 +25,15 @@ class UserAdapter(private val listener: (ApiUser) -> Unit) :
 
     class ViewHolder(
         private val binding: ItemLayoutBinding,
-        private val listener: (ApiUser) -> Unit
+        private val listener: (Int) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(userEntity: ApiUser) {
-            itemView.setOnClickListener { listener.invoke(userEntity) }
+        init {
+           binding.txtName.setOnClickListener { listener(absoluteAdapterPosition) }
+        }
 
+        fun bind(userEntity: ApiUser) {
             binding.apply {
                 txtName.text = userEntity.name
             }
