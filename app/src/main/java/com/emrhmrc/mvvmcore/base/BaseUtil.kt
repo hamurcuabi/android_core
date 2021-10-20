@@ -11,10 +11,12 @@ import androidx.databinding.BindingAdapter
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.emrhmrc.mvvmcore.R
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
 import com.emrhmrc.mvvmcore.ui.main.UserAdapter
+import com.emrhmrc.mvvmcore.ui.main.UserLoadingAdapter
 
 typealias InflateActivityView<T> = (LayoutInflater) -> T
 
@@ -51,8 +53,35 @@ fun Activity.getDrawable(@DrawableRes drawableRes: Int): Drawable? {
 @BindingAdapter("submitList")
 fun setRecyclerViewProperties(recyclerView: RecyclerView, items: List<ApiUser>?) {
     items?.let {
-        if (recyclerView.adapter is UserAdapter) {
-            (recyclerView.adapter as UserAdapter).submitList(items)
+        val adapter = recyclerView.adapter as ConcatAdapter
+        if (adapter.adapters[0] is UserAdapter) {
+            (adapter.adapters[0] as UserAdapter).submitList(items)
+        }
+    }
+}
+
+@BindingAdapter("setLoading")
+fun setRecyclerViewLoading(recyclerView: RecyclerView, isVisible: Boolean?) {
+    isVisible?.let {
+        val loadingAdapter = UserLoadingAdapter()
+        val concatAdapter = recyclerView.adapter as ConcatAdapter
+        if (isVisible) {
+            val list = mutableListOf(1)
+            loadingAdapter.submitList(list)
+            val exist = concatAdapter.adapters.filterIsInstance<UserLoadingAdapter>().isEmpty()
+            if (exist) {
+                concatAdapter.addAdapter(1, loadingAdapter)
+                concatAdapter.notifyItemInserted(1)
+                return@let
+            }
+
+        } else {
+            concatAdapter.adapters.forEachIndexed { i, adapter ->
+                if (concatAdapter.adapters[i] is UserLoadingAdapter) {
+                    concatAdapter.removeAdapter(adapter)
+                    concatAdapter.notifyItemRemoved(i)
+                }
+            }
         }
     }
 }

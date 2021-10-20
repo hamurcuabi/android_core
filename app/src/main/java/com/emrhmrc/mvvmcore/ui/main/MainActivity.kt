@@ -2,6 +2,7 @@ package com.emrhmrc.mvvmcore.ui.main
 
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.ConcatAdapter
 import com.emrhmrc.mvvmcore.base.BaseActivity
 import com.emrhmrc.mvvmcore.databinding.ActivityMainBinding
 import com.emrhmrc.mvvmcore.ui.main.MainViewModel.*
@@ -21,11 +22,11 @@ class MainActivity :
     override fun init() {
         initRecycler()
         binding.viewModel = viewModel
-        binding.fabEvent=MainViewEvent.ClickToFab
-        viewModel.isLoginFormValidMediator.observe(this,{
-           it?.let {
-            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-           }
+        binding.fabEvent = MainViewEvent.ClickToFab
+        viewModel.isLoginFormValidMediator.observe(this, {
+            it?.let {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            }
         })
     }
 
@@ -33,7 +34,8 @@ class MainActivity :
         userAdapter = UserAdapter {
             viewModel.process(MainViewEvent.ClickToItem(it))
         }
-        binding.rcv.adapter = userAdapter
+        val concatAdapter = ConcatAdapter(userAdapter)
+        binding.rcv.adapter = concatAdapter
     }
 
     override fun renderViewState(viewState: MainViewState) {
