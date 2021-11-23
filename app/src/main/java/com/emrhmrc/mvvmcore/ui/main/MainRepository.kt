@@ -5,7 +5,6 @@ import com.emrhmrc.mvvmcore.data.local.AppDatabase
 import com.emrhmrc.mvvmcore.data.network.ApiHelper
 import com.emrhmrc.mvvmcore.data.network.model.ApiUser
 import com.emrhmrc.mvvmcore.di.DispatcherProvider
-import com.emrhmrc.mvvmcore.helper.NetworkHelper
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
 import com.emrhmrc.mvvmcore.utils.ErrorType
 import com.emrhmrc.mvvmcore.utils.NetworkResource
@@ -18,10 +17,9 @@ import javax.inject.Inject
 class MainRepository @Inject constructor(
     private val apiHelper: ApiHelper,
     private val appDatabase: AppDatabase,
-    networkHelper: NetworkHelper,
     resourceProvider: ResourceProvider,
     dispatcher: DispatcherProvider
-) : BaseRepository(networkHelper, resourceProvider, dispatcher) {
+) : BaseRepository(resourceProvider, dispatcher) {
     @Inject
     lateinit var userApiMapper: UserApiMapper
     suspend fun getUsers(): Resource<List<ApiUser>> {

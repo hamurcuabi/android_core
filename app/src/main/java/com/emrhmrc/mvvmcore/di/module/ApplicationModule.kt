@@ -4,15 +4,16 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.emrhmrc.mvvmcore.BuildConfig
+import com.emrhmrc.mvvmcore.base.ErrorHandlingInterceptor
 import com.emrhmrc.mvvmcore.data.local.AppDatabase
 import com.emrhmrc.mvvmcore.data.local.dao.UserDao
 import com.emrhmrc.mvvmcore.data.network.ApiHelper
 import com.emrhmrc.mvvmcore.data.network.ApiHelperImpl
 import com.emrhmrc.mvvmcore.data.network.ApiService
-import com.emrhmrc.mvvmcore.mapper.UserApiMapper
-import com.emrhmrc.mvvmcore.helper.DataStoreHelper
 import com.emrhmrc.mvvmcore.di.DispatcherImpl
 import com.emrhmrc.mvvmcore.di.DispatcherProvider
+import com.emrhmrc.mvvmcore.helper.DataStoreHelper
+import com.emrhmrc.mvvmcore.mapper.UserApiMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,21 +43,34 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+    fun provideOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        errorHandlingInterceptor: ErrorHandlingInterceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(errorHandlingInterceptor)
             .build()
-    } else OkHttpClient
-        .Builder()
-        .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            level = when {
+                BuildConfig.DEBUG -> HttpLoggingInterceptor.Level.BODY
+                else -> HttpLoggingInterceptor.Level.NONE
+            }
+        }
+    }
 
 
     @Provides
     @Singleton
     fun provideRetrofit(
-        okHttpClient: OkHttpClient, @Named("BASE_URL") baseUrl: String
+        okHttpClient: OkHttpClient,
+        @Named("BASE_URL") baseUrl: String
     ): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(baseUrl)
@@ -79,7 +93,8 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton
