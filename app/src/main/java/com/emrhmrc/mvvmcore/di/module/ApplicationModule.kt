@@ -14,6 +14,7 @@ import com.emrhmrc.mvvmcore.di.DispatcherImpl
 import com.emrhmrc.mvvmcore.di.DispatcherProvider
 import com.emrhmrc.mvvmcore.helper.DataStoreHelper
 import com.emrhmrc.mvvmcore.mapper.UserApiMapper
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -96,9 +97,6 @@ object ApplicationModule {
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
-    @Provides
-    @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
 
     @Provides
     @Singleton
@@ -111,9 +109,16 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideDispatchers(dispatcherImpl: DispatcherImpl): DispatcherProvider = dispatcherImpl
-
-    @Provides
-    @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class BindTest {
+    @Binds
+    abstract fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper
+
+    @Binds
+    abstract fun provideDispatchers(dispatcherImpl: DispatcherImpl): DispatcherProvider
+
 }

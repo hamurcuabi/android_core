@@ -18,7 +18,7 @@ import javax.inject.Inject
 class ErrorHandlingInterceptor @Inject constructor(
     private val networkHandler: NetworkHelper
 ) : Interceptor {
-
+    
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!networkHandler.isNetworkConnected()) {
             throw NoConnectivityError
