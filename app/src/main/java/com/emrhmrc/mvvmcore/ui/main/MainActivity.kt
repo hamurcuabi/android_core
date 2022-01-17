@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.emrhmrc.mvvmcore.base.BaseActivity
 import com.emrhmrc.mvvmcore.databinding.ActivityMainBinding
 import com.emrhmrc.mvvmcore.ui.main.MainViewModel.*
+import com.emrhmrc.mvvmcore.utils.getQueryTextChangeStateFlow
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -28,6 +29,12 @@ class MainActivity :
                 Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
             }
         })
+        searchTest()
+    }
+
+    private fun searchTest() {
+        val stateFlow = binding.searchView.getQueryTextChangeStateFlow()
+        viewModel.process(MainViewEvent.SearchTest(stateFlow))
     }
 
     private fun initRecycler() {

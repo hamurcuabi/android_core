@@ -1,6 +1,7 @@
 package com.emrhmrc.mvvmcore.ui.main
 
 import android.app.Application
+import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MediatorLiveData
@@ -13,10 +14,8 @@ import com.emrhmrc.mvvmcore.di.DispatcherProvider
 import com.emrhmrc.mvvmcore.ui.main.MainViewModel.*
 import com.emrhmrc.mvvmcore.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -66,7 +65,8 @@ class MainViewModel @Inject constructor(
             is MainViewEvent.GetUserListEvent -> fetchUsers()
             is MainViewEvent.ClickToItem -> itemClicked(viewEvent.item)
             is MainViewEvent.ClickToFab -> fetchUsers()
-        }
+            is MainViewEvent.SearchTest -> dataFromNetwork(viewEvent.stateFlow)
+        }.exhaustive
     }
 
     private fun itemClicked(newsItem: ApiUser) {
@@ -80,7 +80,7 @@ class MainViewModel @Inject constructor(
                 when (val response = it) {
                     is Resource.Failure -> {
                         viewState = viewState.copy(isLoading = false)
-                       val message= when(response.errorType){
+                        val message = when (response.errorType) {
                             is ErrorType.NetworkError -> response.errorType.message
                             is ErrorType.UnKnownError -> "Unknown"
                             is ErrorType.ValidationError -> response.errorType.message
@@ -101,10 +101,40 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    @FlowPreview
+    @ExperimentalCoroutinesApi
+    private fun dataFromNetwork(flow: StateFlow<String>) {
+        viewModelScope.launch {
+            flow.debounce(300)
+                .filter { query ->
+                    if (query.isEmpty()) {
+                        Log.d("TAG", "searchTest: EMPTY")
+                        return@filter false
+                    } else {
+                        return@filter true
+                    }
+                }
+                .distinctUntilChanged()
+                .flatMapLatest { query ->
+                    flow {
+                        delay(2000)
+                        emit(query)
+                    }.catch {
+                        emitAll(flowOf(""))
+                    }
+                }
+                .flowOn(Dispatchers.Default)
+                .collect { result ->
+                    Log.d("TAG", "searchTest RESULT: $result")
+                }
+        }
+    }
+
     sealed class MainViewEvent {
         object GetUserListEvent : MainViewEvent()
         data class ClickToItem(val item: ApiUser) : MainViewEvent()
         object ClickToFab : MainViewEvent()
+        data class SearchTest(val stateFlow: StateFlow<String>) : MainViewEvent()
     }
 
     data class MainViewState(
